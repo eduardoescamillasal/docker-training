@@ -64,6 +64,38 @@ When switching between projects, tools used in project A should not clash with t
 
 You can either use an **existing, pre-built image** (e.g. via Docker Hub) or Create your **own, custum Image**
 
+A Dockerfile contains the code that docker needs to build the container. It is basically the image.
+
+A simple example of a Dockerfile would be the following:
+
+```Dockerfile
+FROM node
+
+WORKDIR /app
+
+COPY . /app
+
+RUN npm install
+
+EXPOSE 80
+
+CMD ["node", "server.js"]
+```
+
+Afterwards on the terminal run the following:
+
+```shell
+docker build .
+```
+
+when built run :
+
+```shell
+docker run -p 3000:80 333fasbasdad
+```
+
+where _333fasbasdad_ denotes the id of the container created and _80_ the defined expose port.
+
 ## Code snippets
 
 > docker run node
@@ -79,3 +111,5 @@ You can either use an **existing, pre-built image** (e.g. via Docker Hub) or Cre
 > Welcome to Node.js v23.7.0.
 > Type ".help" for more information.
 ```
+
+> docker build .
