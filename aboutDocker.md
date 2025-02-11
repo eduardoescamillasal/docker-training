@@ -96,6 +96,33 @@ docker run -p 3000:80 333fasbasdad
 
 where _333fasbasdad_ denotes the id of the container created and _80_ the defined expose port.
 
+If changes are made to the code (say in server.js), you won't be able to see the changes in the container even if stoped and run again. So you have to _rebuild_ the image (i.e. docker build .)
+
+### Container Layers
+
+A container is the set of a
+
+- container layer (read-write)
+- several image layers (images are read-only)
+
+If a change is made into the code, because we need to rebuild the container, some tasks like `npm install`need not to be applied, but only the changes in the code, and/or dependancies. Hence an optimization of the Dockerfile would be:
+
+```Dockerfile
+FROM node
+
+WORKDIR /app
+
+COPY package.json /app
+
+RUN npm install
+
+COPY . /app
+
+EXPOSE 80
+
+CMD ["node", "server.js"]
+```
+
 ## Code snippets
 
 > docker run node
