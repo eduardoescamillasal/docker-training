@@ -61,3 +61,21 @@ When switching between projects, tools used in project A should not clash with t
 > Templates/Blueprints for containers
 >
 > Contains code + required tools/runtimes
+
+You can either use an **existing, pre-built image** (e.g. via Docker Hub) or Create your **own, custum Image**
+
+## Code snippets
+
+> docker run node
+
+> docker run -it node
+
+**-it** to start interactive session
+
+> docker ps -a
+
+```shell
+> docker-training git:(main) docker run -it node
+> Welcome to Node.js v23.7.0.
+> Type ".help" for more information.
+```
